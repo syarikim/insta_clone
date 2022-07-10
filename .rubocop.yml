@@ -37,3 +37,6 @@ Naming/PredicateName:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
