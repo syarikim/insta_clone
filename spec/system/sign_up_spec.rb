@@ -22,9 +22,7 @@ RSpec.describe 'ユーザー登録', type: :system do
         fill_in 'パスワード', with: '12345678'
         fill_in 'パスワード確認', with: '12345678'
         click_on '登録する'
-        expect {
-          expect(page).to have_content 'ユーザー登録が完了しました'
-        }. to change{ User.count}.by(1)
+        expect(page).to have_content 'ユーザー登録が完了しました'
       end
     end
   end
