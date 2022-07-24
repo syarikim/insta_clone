@@ -10,9 +10,13 @@ services:
       - 3001:3000
     depends_on:
       - db
+      - chrome
     stdin_open: true
     tty: true
+    environment:
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
   db:
+    platform: linux/x86_64
     image: mysql:5.7.33
     environment:
       MYSQL_ROOT_PASSWORD: "mysql"
@@ -20,7 +24,10 @@ services:
       - 3307:3306
     volumes:
       - mysql_data:/var/lib/mysql
-
+  chrome:
+    image: seleniarm/standalone-chromium:latest
+    ports:
+      - 4444:4444
 volumes:
   bundle:
   mysql_data:
