@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+
   def index
     @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
   end
@@ -43,6 +44,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:body, images: [])
   end
-
-
 end
