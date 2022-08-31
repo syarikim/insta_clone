@@ -39,5 +39,15 @@ RSpec.describe '投稿', type: :system do
       expect(page).to have_content '投稿を削除しました'
     end
   end
+
+  describe 'ページネーション' do
+    let!(:post) { create(:post, created_at: Time.current.yesterday) }
+    before do
+      create_list(:post, 15)
+    end
+    it '16件目のポストは1ページ目に表示されていないこと' do
+      expect(page).not_to have_css("#post_#{post.id}")
+    end
+  end
 end
 
